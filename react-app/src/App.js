@@ -5,6 +5,10 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import Dashboard from "./components/Dashboard";
+import LoggedInFooter from "./components/Footers/LoggedIn";
+import "./index.css";
+import AllBadges from "./components/Badges/AllBadges";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,14 +22,21 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login" >
+          <Route path="/login">
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/badges">
+            <AllBadges />
+          </Route>
         </Switch>
       )}
+      <LoggedInFooter />
     </>
   );
 }

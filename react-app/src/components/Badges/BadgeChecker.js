@@ -161,15 +161,6 @@ const BadgeChecker = ({ userBadges, userStats }) => {
     updateMissing(userBadges, missingBadges);
   }
 
-  //   const handleButtonClick = async () => {
-  //     await fetch("/api/badges/update", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ toAdd: missingBadges }),
-  //     });
-  //   };
   // for each stat, check whether the user SHOULD have a certain badge
   // if they SHOULD have a badge, but DON'T have it:
   //   1. initialize copy of user's current badges

@@ -19,139 +19,9 @@ import "./Dashboard.css";
 import { useHistory } from "react-router-dom";
 import BadgeChecker from "../Badges/BadgeChecker";
 import { authenticate } from "../../store/session";
-
-const checkConsecutiveMonths = (months) => {
-  let monthsInYear = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  for (let i = 0; i < monthsInYear.length - 2; i++) {
-    let month1 = monthsInYear[i];
-    let month2 = monthsInYear[i + 1];
-    let month3 = monthsInYear[i + 2];
-
-    if (
-      months[month1.toString()] >= 1 &&
-      months[month2.toString()] >= 1 &&
-      months[month3.toString()] >= 1
-    ) {
-      return true;
-    }
-  }
-  return false;
-};
-
-const getMissingBadges = (stats, badges) => {
-  let numBooks = stats["numBooks"];
-  let numPages = stats["pages"];
-  let byMonth = stats["byMonth"];
-
-  let validBadges = [];
-
-  if (numBooks >= 1) {
-    validBadges.push("Beginner Bookie");
-  }
-
-  if (
-    byMonth["January"] > 1 ||
-    byMonth["February"] > 1 ||
-    byMonth["March"] > 1 ||
-    byMonth["April"] > 1 ||
-    byMonth["May"] > 1 ||
-    byMonth["June"] > 1 ||
-    byMonth["July"] > 1 ||
-    byMonth["August"] > 1 ||
-    byMonth["September"] > 1 ||
-    byMonth["October"] > 1 ||
-    byMonth["November"] > 1 ||
-    byMonth["December"] > 1
-  ) {
-    validBadges.push("Apprentice Bookkeeper");
-  }
-
-  if (numPages > 500) {
-    validBadges.push("Pagemaster in Training");
-  }
-
-  if (checkConsecutiveMonths(stats["byMonth"])) {
-    validBadges.push("Certified Book Fiend");
-  }
-
-  if (numPages > 1000) {
-    validBadges.push("Grand Pagemaster");
-  }
-
-  if (byMonth["January"] >= 1) {
-    validBadges.push("January 2024");
-  }
-
-  if (byMonth["February"] >= 1) {
-    validBadges.push("February 2024");
-  }
-
-  if (byMonth["March"] >= 1) {
-    validBadges.push("March 2024");
-  }
-
-  if (byMonth["April"] >= 1) {
-    validBadges.push("April 2024");
-  }
-
-  if (byMonth["May"] >= 1) {
-    validBadges.push("May 2024");
-  }
-
-  if (byMonth["June"] >= 1) {
-    validBadges.push("June 2024");
-  }
-
-  if (byMonth["July"] >= 1) {
-    validBadges.push("July 2024");
-  }
-
-  if (byMonth["August"] >= 1) {
-    validBadges.push("August 2024");
-  }
-
-  if (byMonth["September"] >= 1) {
-    validBadges.push("September 2024");
-  }
-
-  if (byMonth["October"] >= 1) {
-    validBadges.push("October 2024");
-  }
-
-  if (byMonth["November"] >= 1) {
-    validBadges.push("November 2024");
-  }
-
-  if (byMonth["December"] >= 1) {
-    validBadges.push("December 2024");
-  }
-
-  const allMissing = [];
-  for (let i = 0; i < validBadges.length; i++) {
-    let currBadge = validBadges[i];
-    let filtered = badges.filter((badge) => badge.title === currBadge);
-    if (!filtered.length) {
-      allMissing.push(currBadge);
-    }
-  }
-
-  console.log(allMissing);
-  return allMissing;
-};
+import { fetchUserBadges } from "../../store/badges";
+import UserBadges from "../Badges/UserBadges";
+import UserStats from "../Stats/UserStats";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -165,18 +35,6 @@ const Dashboard = () => {
   const [modalType, setModalType] = useState(null);
   const [selectedBook, setSelectedBook] = useState(null);
 
-  const determineStrongestMonth = (data) => {
-    let strongestMonth;
-    let currMax = -Infinity;
-    for (let month in data) {
-      if (data[month] > currMax) {
-        currMax = data[month];
-        strongestMonth = month;
-      }
-    }
-    return strongestMonth;
-  };
-
   const handleModalClose = async () => {
     await dispatch(fetchUserBooks(currentUser.id));
     setModalShow(false);
@@ -187,6 +45,7 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(fetchUserBooks(currentUser.id));
     dispatch(fetchUserStats(currentUser.id));
+    dispatch(fetchUserBadges());
   }, [dispatch]);
 
   return (
@@ -295,14 +154,11 @@ const Dashboard = () => {
       )}
       <div>
         <h1 id="dash-header">Your Stats</h1>
-        <div>
-          <p>You have read {userStats["numBooks"]} books.</p>
-          <p>You have read a total of {userStats["pages"]} pages.</p>
-          <p>
-            Your strongest month so far is{" "}
-            {determineStrongestMonth(userStats["byMonth"])}.
-          </p>
-        </div>
+        <UserStats />
+      </div>
+      <div>
+        <h1 id="dash-header">Your Badges</h1>
+        <UserBadges />
       </div>
     </div>
   );

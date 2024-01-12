@@ -3,8 +3,8 @@ const achievements = {
     url: "https://i.ibb.co/NZGCQZc/badge1-Photo-Room.png",
     description: "Achieved by logging your first book. Good job!",
     title: "Beginner Bookie",
-    height: "200px",
-    width: "200px",
+    height: "205px",
+    width: "205px",
   },
   "Apprentice Bookkeeper": {
     url: "https://i.ibb.co/5W5THS8/badge2-polished-Photo-Room.png",
@@ -38,8 +38,8 @@ const achievements = {
     url: "https://i.ibb.co/S7wzDMg/badge-jan-Photo-Room.png",
     description: "Achieved by reaching your reading goal for January 2024.",
     title: "January 2024",
-    height: "200px",
-    width: "200px",
+    height: "180px",
+    width: "180px",
   },
   "February 2024": {
     url: "https://i.ibb.co/0snPYJZ/badge-feb-Photo-Room.png",

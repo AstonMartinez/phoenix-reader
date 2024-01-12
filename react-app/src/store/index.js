@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import booksReducer from "./books";
 import statsReducer from "./stats";
+import badgeReducer from "./badges";
 
 const rootReducer = combineReducers({
   session,
   books: booksReducer,
   stats: statsReducer,
+  badges: badgeReducer,
 });
 
 let enhancer;

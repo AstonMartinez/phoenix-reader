@@ -29,3 +29,25 @@ h4 {
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
+.tooltip {
+  background-color: #f8f8ff;
+  height: fit-content;
+  border: 1px solid black;
+  width: 200px;
+  padding: 5px;
+}
+
+.tooltip-hidden {
+  height: fit-content;
+  visibility: hidden;
+  padding: 5px;
+  border: 1px solid transparent;
+  width: 200px;
+}
+
+#user-badges-holder {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}

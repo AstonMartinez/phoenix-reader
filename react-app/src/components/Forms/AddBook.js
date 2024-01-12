@@ -43,6 +43,17 @@ const AddBook = ({ userId, onEnter }) => {
     setDateFinished(newValue);
   };
 
+  const reset = () => {
+    setInputs({
+      title: "",
+      author: "",
+      genre: "",
+      pages: "",
+      reflections: "",
+      month: "January",
+    });
+  };
+
   const handleSubmit = async () => {
     const newBook = {
       title: inputs.title,
@@ -64,6 +75,7 @@ const AddBook = ({ userId, onEnter }) => {
       });
       dispatch(fetchUserBooks(userId));
       onEnter();
+      reset();
     } catch (error) {
       console.log(error);
       toast.error("An error occured", {

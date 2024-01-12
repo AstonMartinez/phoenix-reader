@@ -3,6 +3,11 @@
   right: 25px;
   border: 1px solid black;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  text-align: center;
 }
 
 .hidden {
@@ -32,4 +37,55 @@
   display: flex;
   align-items: center;
   font-size: 22px;
+}
+
+#user-circle-bttn {
+  border: none;
+  background-color: transparent;
+}
+
+#user-circle-bttn:hover {
+  cursor: pointer;
+}
+
+#user-prof-icon {
+  height: 25px;
+  width: 25px;
+}
+
+.dropdown-bttn {
+  width: 90px;
+  height: 35px;
+}
+
+.logout-bttn {
+  border: 3px solid #ff91a4;
+  background-color: #fc5130;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+
+.logout-bttn:hover {
+  border: 3px solid #fc5130;
+  background-color: #ff91a4;
+}
+
+.profile-bttn {
+  background-color: #30bced;
+  border: 3px solid #15f4ee;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+
+.profile-bttn:hover {
+  background-color: #15f4ee;
+  border: 3px solid #30bced;
+}
+
+li {
+  margin-bottom: 8px;
+  /* margin-right: 10px; */
+  list-style: none;
 }

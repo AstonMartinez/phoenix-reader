@@ -4,12 +4,14 @@ import session from "./session";
 import booksReducer from "./books";
 import statsReducer from "./stats";
 import badgeReducer from "./badges";
+import errorsReducer from "./errors";
 
 const rootReducer = combineReducers({
   session,
   books: booksReducer,
   stats: statsReducer,
   badges: badgeReducer,
+  errors: errorsReducer,
 });
 
 let enhancer;

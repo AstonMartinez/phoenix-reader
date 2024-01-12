@@ -1,0 +1,22 @@
+.stats-text-sm {
+}
+
+.stats-text-lg {
+  color: #e97451;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 32px;
+}
+
+#user-stats-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.user-stat-box {
+  border: 1px solid black;
+  width: 25%;
+  text-align: center;
+  margin: 25px 0;
+  border-radius: 20px;
+}

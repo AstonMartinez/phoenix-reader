@@ -5,6 +5,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
+import { FaCircleUser } from "react-icons/fa6";
 
 function ProfileButton({ user }) {
   const history = useHistory();
@@ -43,8 +44,8 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button id="user-circle-bttn" onClick={openMenu}>
+        <FaCircleUser id="user-prof-icon" height={50} width={50} />
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
@@ -52,7 +53,20 @@ function ProfileButton({ user }) {
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <button
+                className="dropdown-bttn logout-bttn"
+                onClick={handleLogout}
+              >
+                Log Out
+              </button>
+            </li>
+            <li>
+              <button
+                className="dropdown-bttn profile-bttn"
+                onClick={() => history.push("/profile")}
+              >
+                My Profile
+              </button>
             </li>
           </>
         ) : (

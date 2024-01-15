@@ -6,15 +6,25 @@ const LoggedInFooter = () => {
     <div className="footer-style-1">
       <div className="footer-1-inner">
         <div id="footer-1-left" className="one-third-footer">
-          <ul>
-            <li>
-              <NavLink exact to="/about">
-                About Us
-              </NavLink>
-            </li>
-            <li>Report a Bug</li>
-            <li>Request a Feature</li>
-          </ul>
+          <div id="left-inner">
+            <ul>
+              <li>
+                <NavLink className="footer-link" exact to="/about">
+                  About Us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="footer-link" exact to="/request">
+                  Request a Feature
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="footer-link" exact to="/bugs">
+                  Report a Bug
+                </NavLink>
+              </li>
+            </ul>
+          </div>
         </div>
         <div id="footer-1-mid" className="one-third-footer">
           <img
@@ -25,14 +35,16 @@ const LoggedInFooter = () => {
           />
         </div>
         <div id="footer-1-right" className="one-third-footer">
-          <button id="support-bttn">
-            <a
-              id="support-link"
-              href="https://www.buymeacoffee.com/astonmartinez"
-            >
-              Support
-            </a>
-          </button>
+          <div id="right-inner">
+            <button id="support-bttn">
+              <a
+                id="support-link"
+                href="https://www.buymeacoffee.com/astonmartinez"
+              >
+                Support
+              </a>
+            </button>
+          </div>
         </div>
       </div>
     </div>

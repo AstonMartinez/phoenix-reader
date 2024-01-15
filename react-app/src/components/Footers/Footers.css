@@ -52,21 +52,44 @@
   justify-content: center;
 }
 
+#right-inner,
+#left-inner {
+  background-color: rgba(42, 30, 92, 0.7);
+  border-radius: 20px;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+#left-inner {
+  color: white;
+  font-weight: bold;
+}
+
 #support-bttn {
-  background-color: #f4743b;
-  border: 3px solid #ffa000;
+  color: white;
+  border: 2px solid #da70d6;
+  background-color: #800080;
   border-radius: 20px;
   height: 55px;
   width: 100px;
 }
 
 #support-bttn:hover {
-  border: 3px solid #f4743b;
-  background-color: #ffa000;
+  background-color: #da70d6;
+  border: 2px solid #800080;
 }
 
 #support-link {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: bold;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: white;
 }

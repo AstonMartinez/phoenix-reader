@@ -34,6 +34,10 @@
 }
 
 #footer-1-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 #footer-1-mid {
@@ -43,4 +47,26 @@
 }
 
 #footer-1-right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#support-bttn {
+  background-color: #f4743b;
+  border: 3px solid #ffa000;
+  border-radius: 20px;
+  height: 55px;
+  width: 100px;
+}
+
+#support-bttn:hover {
+  border: 3px solid #f4743b;
+  background-color: #ffa000;
+}
+
+#support-link {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
 }

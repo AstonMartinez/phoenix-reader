@@ -89,3 +89,8 @@ li {
   /* margin-right: 10px; */
   list-style: none;
 }
+
+.prof-buttons {
+  width: 50px;
+  border: 1px solid blue;
+}

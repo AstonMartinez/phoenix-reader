@@ -1,6 +1,7 @@
 .footer-1-inner {
   background-image: url(https://i.ibb.co/dB6bdLv/biggin-Photo-Room2.png);
   background-repeat: no-repeat;
+  opacity: 0.85;
   background-size: cover;
   height: 300px;
   width: 100%;
@@ -8,7 +9,6 @@
   z-index: 8000;
   display: flex;
   position: relative;
-  /* background-color: #fff5ee; */
 }
 
 .footer-style-1 {

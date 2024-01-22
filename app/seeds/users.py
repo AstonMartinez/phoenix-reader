@@ -8,13 +8,24 @@ def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', password='password', badges=[])
 
-    test_book = Book(
-        title='Test book',
-        author='Test Author',
-        genre='Fantasy',
-        pages=500,
+    test_book1 = Book(
+        title='A Light In the Forest',
+        author='Melissa Payne',
+        genre='Mystery, Domestic Suspense',
+        pages=331,
         is_finished=True,
-        reflections='Great book',
+        reflections='',
+        month='January',
+        user=1
+    )
+
+    test_book2 = Book(
+        title='Upgrade',
+        author='Blake Crouch',
+        genre='Thriller, Science Fiction',
+        pages=337,
+        is_finished=True,
+        reflections='',
         month='January',
         user=1
     )
@@ -22,7 +33,7 @@ def seed_users():
     db.session.add(demo)
     db.session.commit()
 
-    db.session.add(test_book)
+    db.session.add_all([test_book1, test_book2])
     db.session.commit()
 
 

@@ -12,6 +12,9 @@ import AllBadges from "./components/Badges/AllBadges";
 import UserProfile from "./components/UserProfile";
 import LandingPage from "./components/LandingPage";
 import GenreQuiz from "./components/Quizzes/GenreQuiz";
+import QuizHomepage from "./components/Quizzes/QuizHomepage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +27,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <ToastContainer />
       {isLoaded && (
         <Switch>
           <Route exact path="/">
@@ -46,6 +50,9 @@ function App() {
           </Route>
           <Route exact path="/quizzes/genre">
             <GenreQuiz />
+          </Route>
+          <Route exact path="/quizzes">
+            <QuizHomepage />
           </Route>
         </Switch>
       )}

@@ -1,0 +1,35 @@
+#quiz-1-header {
+  height: 180px;
+}
+
+#quiz-retake-bttn {
+  border: 3px solid #ff91a4;
+  background-color: #fc5130;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+
+#quiz-retake-bttn:hover {
+  border: 3px solid #fc5130;
+  background-color: #ff91a4;
+}
+
+#quiz-submit-bttn {
+  background-color: #30bced;
+  border: 3px solid #15f4ee;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+
+#quiz-submit-bttn:hover {
+  background-color: #15f4ee;
+  border: 3px solid #30bced;
+}
+
+.quiz-bttn {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+}

@@ -2,12 +2,11 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 const outerStyle = {
-  display: "flex",
-  flexDirection: "column",
+  paddingLeft: "20px",
 };
 
 const sectionStyle = {
-  display: "flex",
+  marginBottom: "15px",
 };
 
 const GenreQuiz = () => {
@@ -25,6 +24,7 @@ const GenreQuiz = () => {
   });
 
   const [result, setResult] = useState(null);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const handleResponseChange = (e) => {
     setResponses((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -105,7 +105,6 @@ const GenreQuiz = () => {
 
   const handleSubmit = () => {
     const userAnswers = Object.values(responses);
-    console.log(userAnswers);
     if (userAnswers.includes("")) {
       toast.error("Please ensure you answered all questions.", {
         position: "top-center",
@@ -113,22 +112,46 @@ const GenreQuiz = () => {
         theme: "dark",
       });
     } else {
-      toast.loading("Processing Results", {
-        id: "loadingToast",
-        position: "top-center",
-      });
+      setHasSubmitted(true);
+      const id = toast.loading("Processing...");
 
       const userResult = suggestBookGenre(userAnswers);
       setResult(userResult);
-      console.log(userResult);
 
-      toast.dismiss("loadingToast");
+      toast.update(id, {
+        render: "All done!",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
+      return;
     }
   };
 
+  const handleRetake = () => {
+    setResponses({
+      "question-one": "",
+      "question-two": "",
+      "question-three": "",
+      "question-four": "",
+      "question-five": "",
+      "question-six": "",
+      "question-seven": "",
+      "question-eight": "",
+      "question-nine": "",
+      "question-ten": "",
+    });
+
+    setResult(null);
+    setHasSubmitted(false);
+  };
+
   return (
-    <div>
-      <section>
+    <div style={outerStyle}>
+      <section style={{ textAlign: "center", marginBottom: "10px" }}>
+        <h1>Which Genre Should You Read Next?</h1>
+      </section>
+      <section style={sectionStyle}>
         <label htmlFor="question-one">
           <strong>What pace do you prefer in a book?</strong>
         </label>
@@ -160,7 +183,7 @@ const GenreQuiz = () => {
           Slow and contemplative storytelling
         </div>
       </section>
-      <section>
+      <section style={sectionStyle}>
         <label htmlFor="question-two">
           <strong>Which setting do you find most intriguing?</strong>
         </label>
@@ -192,7 +215,7 @@ const GenreQuiz = () => {
           Cozy small towns or rural landscapes
         </div>
       </section>
-      <section>
+      <section style={sectionStyle}>
         <label htmlFor="question-three">
           <strong>What type of protagonist do you prefer?</strong>
         </label>
@@ -224,7 +247,7 @@ const GenreQuiz = () => {
           Relatable and everyday individuals
         </div>
       </section>
-      <section>
+      <section style={sectionStyle}>
         <label htmlFor="question-four">
           <strong>What is your preferred narrative style?</strong>
         </label>
@@ -256,7 +279,7 @@ const GenreQuiz = () => {
           Multiple perspectives to explore different characters
         </div>
       </section>
-      <section>
+      <section style={sectionStyle}>
         <label htmlFor="question-five">
           <strong>Which plot element captivates you the most?</strong>
         </label>
@@ -288,7 +311,7 @@ const GenreQuiz = () => {
           Personal growth and overcoming challenges
         </div>
       </section>
-      <section>
+      <section style={sectionStyle}>
         <label htmlFor="question-six">
           <strong>What role should romance play in the story?</strong>
         </label>
@@ -320,7 +343,7 @@ const GenreQuiz = () => {
           Minimal or no romance
         </div>
       </section>
-      <section>
+      <section style={sectionStyle}>
         <label htmlFor="question-seven">
           <strong>
             How do you feel about supernatural elements in a story?
@@ -354,7 +377,7 @@ const GenreQuiz = () => {
           Prefer realistic, down-to-earth stories
         </div>
       </section>
-      <section>
+      <section style={sectionStyle}>
         <label htmlFor="question-eight">
           <strong>What mood are you in the mood for?</strong>
         </label>
@@ -386,7 +409,7 @@ const GenreQuiz = () => {
           Comfort and warmth
         </div>
       </section>
-      <section>
+      <section style={sectionStyle}>
         <label htmlFor="question-nine">
           <strong>How long are you willing to invest in a book?</strong>
         </label>
@@ -418,7 +441,7 @@ const GenreQuiz = () => {
           Epic and immersive (500+ pages)
         </div>
       </section>
-      <section>
+      <section style={sectionStyle}>
         <label htmlFor="question-ten">
           <strong>What kind of ending satisfies you the most?</strong>
         </label>
@@ -451,7 +474,36 @@ const GenreQuiz = () => {
         </div>
       </section>
       <section>
-        <button onClick={handleSubmit}>Submit</button>
+        <h3>
+          Your Result:{" "}
+          {result ? (
+            result
+          ) : (
+            <em style={{ textEmphasis: "italic", fontSize: "14px" }}>
+              Submit your answers to find out!
+            </em>
+          )}
+        </h3>
+      </section>
+      <section>
+        <button
+          id="quiz-submit-bttn"
+          className="quiz-bttn"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+        {hasSubmitted ? (
+          <button
+            id="quiz-retake-bttn"
+            className="quiz-bttn"
+            onClick={handleRetake}
+          >
+            Retake
+          </button>
+        ) : (
+          ""
+        )}
       </section>
     </div>
   );

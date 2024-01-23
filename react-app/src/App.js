@@ -11,6 +11,7 @@ import "./index.css";
 import AllBadges from "./components/Badges/AllBadges";
 import UserProfile from "./components/UserProfile";
 import LandingPage from "./components/LandingPage";
+import GenreQuiz from "./components/Quizzes/GenreQuiz";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route exact path="/profile">
             <UserProfile />
+          </Route>
+          <Route exact path="/quizzes/genre">
+            <GenreQuiz />
           </Route>
         </Switch>
       )}
